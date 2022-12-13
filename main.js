@@ -22,11 +22,11 @@ renderer.render( scene, camera );
 
 // Torus
 
-const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
-const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } );
-const torus = new THREE.Mesh( geometry, material );
+// const geometry = new THREE.TorusGeometry( 10, 3, 16, 100 );
+// const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } );
+// const torus = new THREE.Mesh( geometry, material );
 
-scene.add(torus);
+// scene.add(torus);
 
 // Lights
 
@@ -74,6 +74,14 @@ scene.add(mike);
 mike.position.z = -5;
 mike.position.x = 2;
 
+// Icosahedron
+
+const icoGeometry = new THREE.TetrahedronGeometry(7, 2);
+const icoMaterial = new THREE.MeshStandardMaterial( { color: 0xFF6347 } );
+const icosahedron = new THREE.Mesh(icoGeometry, icoMaterial);
+
+scene.add(icosahedron);
+
 // moving camera on scroll
 const moveCamera = () => {
   const t = document.body.getBoundingClientRect().top;
@@ -93,9 +101,9 @@ moveCamera();
 const animate = () => {
   requestAnimationFrame( animate );
 
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += 0.01;
+  // torus.rotation.x += 0.01;
+  // torus.rotation.y += 0.005;
+  // torus.rotation.z += 0.01;
 
   // controls.update();
 
