@@ -37,6 +37,33 @@ scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+const addStar = () => {
+  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
+  const star = new THREE.Mesh( geometry, material );
+
+  const [x,y,z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );
+
+  star.position.set(x, y, z);
+  scene.add(star);
+};
+
+Array(200).fill().forEach(addStar);
+
+// background
+// const backgroundTexture = new THREE.TextureLoader().load('FILE HERE');
+// scene.background = backgroundTexture;
+
+// avatar
+const mikeTexture = new THREE.TextureLoader().load('mike.png');
+
+const mike = new THREE.Mesh(
+  new THREE.BoxGeometry(3,3,3),
+  new THREE.MeshBasicMaterial( { map: mikeTexture } )
+);
+
+scene.add(mike);
+
 const animate = () => {
   requestAnimationFrame( animate );
 
@@ -47,6 +74,6 @@ const animate = () => {
   controls.update();
 
   renderer.render( scene, camera );
-}
+};
 
 animate();
